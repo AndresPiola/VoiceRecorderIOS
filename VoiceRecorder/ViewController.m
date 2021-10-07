@@ -96,7 +96,11 @@
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
 {
-    NSLog (@"audioRecorderDidFinishRecording:successfully:");
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    NSURL *tmpFileUrl = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"Mustakistmp.m4a"]];
+    NSString *urlString=tmpFileUrl.absoluteString;
+    NSLog (@"audioRecorderDidFinishRecording:successfully: %@ ",urlString);
 }
 
 
